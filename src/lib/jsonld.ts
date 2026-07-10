@@ -5,6 +5,9 @@
 import { siteConfig } from './site';
 import { services } from './data';
 
+// Teléfono en formato E.164 (sin espacios) — el que prefiere schema.org/Google.
+const phoneE164 = siteConfig.phone.replace(/\s/g, '');
+
 function postalAddress(loc: (typeof siteConfig.locations)[number]) {
   return {
     '@type': 'PostalAddress',
@@ -29,7 +32,7 @@ export function organizationJsonLd() {
     description: siteConfig.description,
     foundingDate: String(siteConfig.foundingYear),
     email: siteConfig.email,
-    telephone: siteConfig.phone,
+    telephone: phoneE164,
     address: siteConfig.locations.map(postalAddress),
     location: siteConfig.locations.map((loc) => ({
       '@type': 'Place',
@@ -41,17 +44,13 @@ export function organizationJsonLd() {
         longitude: loc.geo.lng,
       },
     })),
-    sameAs: [
-      siteConfig.social.linkedin,
-      siteConfig.social.github,
-      siteConfig.social.x,
-      siteConfig.social.instagram,
-    ],
+    // sameAs se omite hasta contar con perfiles de redes sociales reales.
+    // Al agregarlos en siteConfig.social, reintroducir aquí como array de URLs.
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
       email: siteConfig.email,
-      telephone: siteConfig.phone,
+      telephone: phoneE164,
       areaServed: 'CO',
       availableLanguage: ['es', 'en'],
     },
@@ -68,7 +67,7 @@ export function localBusinessJsonLd() {
     parentOrganization: { '@id': `${siteConfig.url}/#organization` },
     url: siteConfig.url,
     email: siteConfig.email,
-    telephone: siteConfig.phone,
+    telephone: phoneE164,
     address: postalAddress(loc),
     geo: {
       '@type': 'GeoCoordinates',
