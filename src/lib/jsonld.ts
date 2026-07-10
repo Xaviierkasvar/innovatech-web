@@ -7,6 +7,8 @@ import { services } from './data';
 
 // Teléfono en formato E.164 (sin espacios) — el que prefiere schema.org/Google.
 const phoneE164 = siteConfig.phone.replace(/\s/g, '');
+// Imagen para los nodos LocalBusiness/Organization (OG image 1200×630, PNG real).
+const orgImage = `${siteConfig.url}/opengraph-image`;
 
 function postalAddress(loc: (typeof siteConfig.locations)[number]) {
   return {
@@ -29,6 +31,7 @@ export function organizationJsonLd() {
     alternateName: siteConfig.shortName,
     url: siteConfig.url,
     logo: `${siteConfig.url}/icon.svg`,
+    image: orgImage,
     description: siteConfig.description,
     foundingDate: String(siteConfig.foundingYear),
     email: siteConfig.email,
@@ -66,6 +69,7 @@ export function localBusinessJsonLd() {
     name: `${siteConfig.shortName} — ${loc.city}`,
     parentOrganization: { '@id': `${siteConfig.url}/#organization` },
     url: siteConfig.url,
+    image: orgImage,
     email: siteConfig.email,
     telephone: phoneE164,
     address: postalAddress(loc),
