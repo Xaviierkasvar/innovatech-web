@@ -73,7 +73,7 @@ Todas viven en `.env.local` (ignorado por git). Las `NEXT_PUBLIC_*` se exponen a
    - **To Email:** `contacto@innovatechsolutions.lat` (o usa `{{to_email}}`)
    - **Reply To:** `{{reply_to}}`
    - **Subject:** `Nueva solicitud de contacto de {{from_name}}`
-   - **Body (ejemplo):**
+   - **Cuerpo sugerido:**
      ```
      Nombre:   {{from_name}}
      Correo:   {{reply_to}}
@@ -89,7 +89,7 @@ Todas viven en `.env.local` (ignorado por git). Las `NEXT_PUBLIC_*` se exponen a
    ### Template 2 — Auto-respuesta → al visitante
    - **To Email:** `{{reply_to}}`
    - **Subject:** `Recibimos tu solicitud — INNOVATECH SOLUTIONS`
-   - **Body (ejemplo):**
+   - **Cuerpo sugerido:**
      ```
      Hola {{from_name}},
 
@@ -158,8 +158,8 @@ src/
 
 Buscar `TODO` en el código. Pendientes clave:
 
-- [ ] **`src/lib/site.ts`**: teléfono real, direcciones exactas de Bogotá y Barranquilla, URLs reales de redes sociales.
-- [ ] **`src/lib/data.ts`**: testimonios reales (los actuales están marcados como *ejemplo*); ajustar cifras de `stats` si aplica.
+- [ ] **`src/lib/site.ts`**: direcciones exactas de Bogotá y Barranquilla, URLs reales de redes sociales.
+- [ ] **`src/lib/data.ts`**: la sección de testimonios está oculta mientras `testimonials` esté vacío; agrega testimonios reales para reactivarla. Ajustar cifras de `stats` si aplica.
 - [ ] **`NEXT_PUBLIC_SITE_URL`** con el dominio definitivo.
 - [ ] (Opcional) `public/logo.png`, `public/icon-192.png`, `public/icon-512.png` para logo/PWA en alta resolución.
 - [ ] Imágenes reales de proyectos (hoy el portafolio es tipográfico; usar `next/image` al agregarlas).

@@ -3,8 +3,7 @@
  * testimonios y estadísticas. Editar aquí para actualizar el sitio.
  *
  * NOTA: Los proyectos son casos de estudio genéricos (problema → solución →
- * stack → resultado). No se usan nombres de clientes reales. Los testimonios
- * están marcados como EJEMPLO hasta contar con testimonios reales.
+ * stack → resultado). No se usan nombres de clientes reales.
  */
 
 export type Service = {
@@ -246,31 +245,11 @@ export type Testimonial = {
   initials: string;
 };
 
-// Atribuciones anonimizadas (rol + sector) por confidencialidad de clientes.
-// Reemplazar por testimonios reales atribuidos cuando se cuente con autorización.
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      'El equipo entendió nuestro proceso mejor que nosotros mismos y entregó una plataforma que hoy es el corazón de la operación.',
-    role: 'Directora de Operaciones',
-    sector: 'Sector logística',
-    initials: 'DO',
-  },
-  {
-    quote:
-      'Migraron nuestro sistema legado a la nube sin interrumpir la operación. Profesionalismo y comunicación de primer nivel.',
-    role: 'Director de Tecnología (CTO)',
-    sector: 'Sector financiero',
-    initials: 'CT',
-  },
-  {
-    quote:
-      'Su enfoque DevOps redujo nuestros tiempos de despliegue de horas a minutos. Un socio técnico, no solo un proveedor.',
-    role: 'Gerente de Tecnología',
-    sector: 'Sector retail',
-    initials: 'GT',
-  },
-];
+// La sección de testimonios se oculta automáticamente mientras este arreglo
+// esté vacío. Para reactivarla, agrega testimonios reales (con autorización del
+// cliente) siguiendo la forma del tipo Testimonial:
+//   { quote: '...', role: 'Cargo', sector: 'Sector', initials: 'XX' }
+export const testimonials: Testimonial[] = [];
 
 export type Stat = {
   value: number;
@@ -279,8 +258,8 @@ export type Stat = {
 };
 
 export const stats: Stat[] = [
-  { value: 50, suffix: '+', label: 'Proyectos entregados' },
-  { value: 30, suffix: '+', label: 'Años de experiencia combinada' },
-  { value: 6, suffix: '', label: 'Áreas de especialización' },
+  { value: 25, suffix: '+', label: 'Proyectos entregados' },
+  { value: 3, suffix: '+', label: 'Años de experiencia' },
+  { value: 5, suffix: '', label: 'Áreas de especialización' },
   { value: 2, suffix: '', label: 'Sedes en Colombia' },
 ];

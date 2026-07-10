@@ -7,7 +7,7 @@ import { useInView } from 'framer-motion';
 export function AnimatedCounter({
   value,
   suffix = '',
-  duration = 1600,
+  duration = 1800,
 }: {
   value: number;
   suffix?: string;

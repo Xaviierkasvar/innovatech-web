@@ -6,7 +6,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       // Añade aquí dominios externos si sirves imágenes de un CDN.
-      // { protocol: 'https', hostname: 'images.ejemplo.com' },
+      // { protocol: 'https', hostname: 'images.example.com' },
     ],
   },
   async headers() {

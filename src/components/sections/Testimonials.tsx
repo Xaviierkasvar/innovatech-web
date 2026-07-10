@@ -17,9 +17,13 @@ export function Testimonials() {
 
   // Autoplay pausable (se reinicia al cambiar de slide manualmente).
   useEffect(() => {
+    if (count === 0) return;
     const id = setInterval(() => setIndex((i) => (i + 1) % count), 6000);
     return () => clearInterval(id);
   }, [count, index]);
+
+  // Sin testimonios reales, la sección no se muestra en producción.
+  if (count === 0) return null;
 
   const t = testimonials[index];
 
@@ -30,14 +34,6 @@ export function Testimonials() {
           eyebrow="Testimonios"
           title="Lo que dicen quienes trabajan con nosotros"
         />
-
-        {/* Aviso de placeholder */}
-        <p className="mx-auto mt-4 flex max-w-xl items-center justify-center gap-2 text-center text-xs text-muted">
-          <span className="rounded-full border border-[rgb(var(--border))] px-2 py-0.5 font-medium">
-            Ejemplo
-          </span>
-          Atribuciones anonimizadas por confidencialidad — se reemplazarán por testimonios reales.
-        </p>
 
         <div className="relative mx-auto mt-12 max-w-3xl">
           <Quote className="mx-auto h-10 w-10 text-brand-500/30" />

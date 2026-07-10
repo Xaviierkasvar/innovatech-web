@@ -177,7 +177,7 @@ export function Contact() {
                   disabled={disabled}
                 />
                 <Field label="Empresa" name="company" placeholder="Nombre de tu empresa" disabled={disabled} />
-                <Field label="Teléfono" name="phone" type="tel" placeholder="+57 300 000 0000" disabled={disabled} />
+                <Field label="Teléfono" name="phone" type="tel" placeholder="+57 301 341 6669" disabled={disabled} />
               </div>
 
               <div className="mt-5">

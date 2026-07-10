@@ -15,9 +15,8 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.innovatechsolutions.lat',
   locale: 'es_CO',
   email: 'contacto@innovatechsolutions.lat',
-  // TODO: reemplazar por el teléfono real de la empresa.
-  phone: '+57 300 000 0000',
-  foundingYear: 2018,
+  phone: '+57 301 341 6669',
+  foundingYear: 2023,
   social: {
     // TODO: reemplazar por las URLs reales de redes sociales.
     linkedin: 'https://www.linkedin.com/company/innovatech-solutions-global',
