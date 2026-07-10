@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, MessageCircle, MapPin, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { Reveal } from '../ui/Reveal';
 import { siteConfig } from '@/lib/site';
@@ -20,6 +20,12 @@ const env = {
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Enlace de WhatsApp: número real sin '+', espacios ni 0 inicial + mensaje.
+// En escritorio wa.me abre WhatsApp Web; en móvil, la app.
+const WHATSAPP_NUMBER = siteConfig.phone.replace(/[^\d]/g, '');
+const WHATSAPP_MESSAGE = 'Hola, INNOVATECH SOLUTIONS. Me gustaría hablar sobre un proyecto.';
+const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 export function Contact() {
   const [status, setStatus] = useState<Status>('idle');
@@ -123,14 +129,17 @@ export function Contact() {
             </a>
 
             <a
-              href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Escribir por WhatsApp al ${siteConfig.phone}`}
               className="surface-card flex items-center gap-4 rounded-2xl p-5 transition-colors hover:border-brand-400"
             >
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-500/10 text-brand-500">
-                <Phone className="h-5 w-5" />
+                <MessageCircle className="h-5 w-5" />
               </span>
               <span>
-                <span className="block text-sm text-muted">Teléfono</span>
+                <span className="block text-sm text-muted">WhatsApp</span>
                 <span className="font-medium">{siteConfig.phone}</span>
               </span>
             </a>
@@ -177,7 +186,7 @@ export function Contact() {
                   disabled={disabled}
                 />
                 <Field label="Empresa" name="company" placeholder="Nombre de tu empresa" disabled={disabled} />
-                <Field label="Teléfono" name="phone" type="tel" placeholder="+57 301 341 6669" disabled={disabled} />
+                <Field label="Teléfono" name="phone" type="tel" placeholder="+57 300 000 0000" disabled={disabled} />
               </div>
 
               <div className="mt-5">
