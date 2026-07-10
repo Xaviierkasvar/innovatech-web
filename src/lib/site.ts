@@ -11,9 +11,9 @@ export const siteConfig = {
   tagline: 'Ingeniería de software que impulsa negocios',
   description:
     'INNOVATECH SOLUTIONS GLOBAL S.A.S es una empresa colombiana de desarrollo de software a medida, aplicaciones web y móviles, arquitectura cloud-native y DevOps. Sede en Bogotá y hub de desarrollo en Barranquilla.',
-  // Dominio canónico. El apex tiene certificado SSL válido; la variante con
-  // www no está configurada en Vercel, por eso el canónico apunta al apex.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://innovatechsolutions.lat',
+  // Dominio canónico = www (dominio Production en Vercel, con SSL válido).
+  // El apex innovatechsolutions.lat redirige (307) a www.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.innovatechsolutions.lat',
   locale: 'es_CO',
   email: 'contacto@innovatechsolutions.lat',
   phone: '+57 301 341 6669',
