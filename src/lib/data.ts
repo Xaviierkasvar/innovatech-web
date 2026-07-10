@@ -259,7 +259,7 @@ export type Stat = {
 
 export const stats: Stat[] = [
   { value: 25, suffix: '+', label: 'Proyectos entregados' },
-  { value: 3, suffix: '+', label: 'Años de experiencia' },
+  { value: 6, suffix: '+', label: 'Años de experiencia' },
   { value: 5, suffix: '', label: 'Áreas de especialización' },
   { value: 2, suffix: '', label: 'Sedes en Colombia' },
 ];

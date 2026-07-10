@@ -17,7 +17,7 @@ export const siteConfig = {
   locale: 'es_CO',
   email: 'contacto@innovatechsolutions.lat',
   phone: '+57 301 341 6669',
-  foundingYear: 2023,
+  foundingYear: 2020,
   social: {
     // TODO: reemplazar por las URLs reales de redes sociales.
     linkedin: 'https://www.linkedin.com/company/innovatech-solutions-global',
