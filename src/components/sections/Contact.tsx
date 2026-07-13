@@ -17,6 +17,7 @@ const env = {
   templateNotif: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_NOTIFICACION,
   templateAuto: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_AUTORESPUESTA,
   publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+  replyToAdmin: process.env.NEXT_PUBLIC_EMAILJS_REPLY_TO,
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -84,7 +85,7 @@ export function Contact() {
     const adminParams = {
       title: `Nueva solicitud de: ${from_name}`,
       message: `Nombre: ${from_name}\nCorreo: ${reply_to}\nEmpresa: ${company}\nTeléfono: ${phone}\nProyecto: ${project_type}\nMensaje:\n${message}`,
-      to_email: siteConfig.email,
+      to_email: env.replyToAdmin || siteConfig.email,
       name: from_name,
       email: reply_to,
     };
