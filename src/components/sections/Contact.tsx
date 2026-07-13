@@ -86,7 +86,7 @@ export function Contact() {
       title: `Nueva solicitud de: ${from_name}`,
       message: `Nombre: ${from_name}\nCorreo: ${reply_to}\nEmpresa: ${company}\nTeléfono: ${phone}\nProyecto: ${project_type}\nMensaje:\n${message}`,
       to_email: env.replyToAdmin || siteConfig.email,
-      name: from_name,
+      name: "Formulario Innovatech", // Evita que los filtros de spam lo marquen como suplantación
       email: reply_to,
     };
 
