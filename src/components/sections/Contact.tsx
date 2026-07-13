@@ -73,21 +73,36 @@ export function Contact() {
     setErrorMsg('');
 
     const data = new FormData(form);
-    const params = {
-      from_name: String(data.get('from_name') ?? ''),
-      reply_to: String(data.get('reply_to') ?? ''),
-      company: String(data.get('company') ?? 'No especificada'),
-      phone: String(data.get('phone') ?? 'No especificado'),
-      project_type: String(data.get('project_type') ?? ''),
-      message: String(data.get('message') ?? ''),
+    const from_name = String(data.get('from_name') ?? '');
+    const reply_to = String(data.get('reply_to') ?? '');
+    const company = String(data.get('company') ?? 'No especificada');
+    const phone = String(data.get('phone') ?? 'No especificado');
+    const project_type = String(data.get('project_type') ?? '');
+    const message = String(data.get('message') ?? '');
+
+    // Parámetros para el correo que te llega a ti (Notificación)
+    const adminParams = {
+      title: `Nueva solicitud de: ${from_name}`,
+      message: `Nombre: ${from_name}\nCorreo: ${reply_to}\nEmpresa: ${company}\nTeléfono: ${phone}\nProyecto: ${project_type}\nMensaje:\n${message}`,
       to_email: siteConfig.email,
+      name: from_name,
+      email: reply_to,
+    };
+
+    // Parámetros para el correo que le llega al cliente (Auto-respuesta)
+    const visitorParams = {
+      title: "Gracias por contactar a Innovatech Solutions",
+      message: `Hola ${from_name},\n\nHemos recibido tu solicitud de información sobre "${project_type}". Próximamente nos pondremos en contacto contigo para conversar sobre tu proyecto.\n\nAtentamente,\nEl equipo de Innovatech Solutions`,
+      to_email: reply_to,
+      name: "Innovatech Solutions",
+      email: siteConfig.email,
     };
 
     try {
       // 1) Notificación interna al equipo.
-      await emailjs.send(env.serviceId, env.templateNotif, params, { publicKey: env.publicKey });
+      await emailjs.send(env.serviceId, env.templateNotif, adminParams, { publicKey: env.publicKey });
       // 2) Auto-respuesta al visitante.
-      await emailjs.send(env.serviceId, env.templateAuto, params, { publicKey: env.publicKey });
+      await emailjs.send(env.serviceId, env.templateAuto, visitorParams, { publicKey: env.publicKey });
 
       setStatus('exito');
       form.reset();
